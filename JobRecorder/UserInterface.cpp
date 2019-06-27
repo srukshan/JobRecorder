@@ -1,5 +1,6 @@
 #include "UserInterface.h"
 #include <stdlib.h>
+#include "Job.h"
 
 tuple<string, string> UserInterface::displayLogin()
 {
@@ -53,6 +54,57 @@ void UserInterface::displayCompanyDetails()
 	cout << "\tType\t\t:\tMobile phone repairing center" << endl << endl;
 
 	system("PAUSE");
+}
+
+Job UserInterface::displayAddJob()
+{
+	int ownerNumber;
+	string address;
+	int telNum;
+	string phoneModel;
+	int phoneSerialNum;
+	string recievedDate;
+	string deliveredDate;
+	double price;
+	char condition;
+
+	displayHeader();
+	cout << "                            Add Job" << endl << endl;
+	cout << "\tOwner Number\t:\t";
+	cin >> ownerNumber;
+	cout << "\tAddress\t\t:\t";
+	cin >> address;
+	cout << "\tTel Number\t:\t";
+	cin >> telNum;
+	cout << "\tPhone Model\t:\t";
+	cin >> phoneModel;
+	cout << "\tPhone Serial Number\t:\t";
+	cin >> phoneSerialNum;
+	cout << "\tRecieved Date\t:\t";
+	cin >> recievedDate;
+
+	cout << endl << "\tDo you want to enter the deleivered Date (y/n)";
+	cin >> condition;
+	if (condition == 'y') {
+		cout << "\Delivered Date\t:\t";
+		cin >> deliveredDate;
+	}
+	else {
+		system("PAUSE");
+		return Job(ownerNumber, address, telNum, phoneModel, phoneSerialNum, recievedDate);
+	}
+	cout << endl << "\tDo you want to enter the price (y/n)";
+	cin >> condition;
+	if (condition == 'y') {
+		cout << "\Price\t\t:\t";
+		cin >> price;
+	}
+	else {
+		system("PAUSE");
+		return Job(ownerNumber, address, telNum, phoneModel, phoneSerialNum, recievedDate, deliveredDate);
+	}
+	system("PAUSE");
+	return Job(ownerNumber, address, telNum, phoneModel, phoneSerialNum, recievedDate, deliveredDate, price);
 }
 
 void UserInterface::displayHeader()

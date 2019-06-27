@@ -5,7 +5,7 @@ using namespace std;
 class Job
 {
 private:
-	static int currentMaxId = 0;
+	static int currentMaxId;
 	int id;
 	int ownerNumber;
 	string address;
@@ -38,4 +38,5 @@ public:
 	void setDeliveredDate(string deliveredDate);
 	double getPrice();
 	void setPrice(double price);
+	string toString();
 };

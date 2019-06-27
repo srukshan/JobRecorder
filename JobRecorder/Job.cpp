@@ -1,4 +1,5 @@
 #include "Job.h"
+#include <sstream>
 
 Job::Job()
 {
@@ -59,4 +60,89 @@ string Job::getAddress()
 void Job::setAddress(string address)
 {
 	this->address = address;
+}
+
+int Job::getOwnerNumber()
+{
+	return ownerNumber;
+}
+
+void Job::setOwnerNumber(int ownerNumber)
+{
+	this->ownerNumber = ownerNumber;
+}
+
+int Job::getTelNum()
+{
+	return telNum;
+}
+
+void Job::setTelNum(int telNum)
+{
+	this->telNum = telNum;
+}
+
+string Job::getPhoneModel()
+{
+	return phoneModel;
+}
+
+void Job::setPhoneModel(string phoneModel)
+{
+	this->phoneModel = phoneModel;
+}
+
+int Job::getPhoneSerialNum()
+{
+	return phoneSerialNum;
+}
+
+void Job::setPhoneSerialNum(int phoneSerialNum)
+{
+	this->phoneSerialNum = phoneSerialNum;
+}
+
+string Job::getRecievedDate()
+{
+	return recievedDate;
+}
+
+void Job::setRecievedDate(string recievedDate)
+{
+	this->recievedDate = recievedDate;
+}
+
+string Job::getDeliveredDate()
+{
+	return deliveredDate;
+}
+
+void Job::setDeliveredDate(string deliveredDate)
+{
+	this->deliveredDate = deliveredDate;
+}
+
+double Job::getPrice()
+{
+	return price;
+}
+
+void Job::setPrice(double price)
+{
+	this->price = price;
+}
+
+string Job::toString()
+{
+	std::ostringstream oss;
+	oss << std::to_string(id) << ","
+		<< ownerNumber << ","
+		<< address << ","
+		<< std::to_string(telNum) << ","
+		<< phoneModel << ","
+		<< std::to_string(phoneSerialNum) << ","
+		<< recievedDate << ","
+		<< deliveredDate << ","
+		<< std::to_string(price) << endl;
+	return oss.str();
 }
