@@ -42,6 +42,13 @@ int main()
 		case 2:
 			Job job = ui.displayAddJob();
 			controller.insertJob(job);
+			break;
+		case 3:
+			string id = ui.displayGetId();
+			Job job = controller.findByID(id);
+			while (ui.displayUpdate(&job));
+			controller.updateJob(job);
+			break;
 		}
 	}
 }

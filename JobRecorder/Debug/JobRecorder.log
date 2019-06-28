@@ -1,5 +1,4 @@
-﻿  JobRecorder.cpp
-  UserInterface.cpp
-  Generating Code...
-  LINK : C:\Users\sachi\source\repos\JobRecorder\Debug\JobRecorder.exe not found or not built by the last incremental link; performing full link
+﻿  UserInterface.cpp
+C:\Users\sachi\source\repos\JobRecorder\JobRecorder\UserInterface.cpp(97,11): warning C4129:  'D': unrecognized character escape sequence
+C:\Users\sachi\source\repos\JobRecorder\JobRecorder\UserInterface.cpp(107,11): warning C4129:  'P': unrecognized character escape sequence
   JobRecorder.vcxproj -> C:\Users\sachi\source\repos\JobRecorder\Debug\JobRecorder.exe

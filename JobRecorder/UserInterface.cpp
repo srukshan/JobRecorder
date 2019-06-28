@@ -58,6 +58,7 @@ void UserInterface::displayCompanyDetails()
 
 Job UserInterface::displayAddJob()
 {
+	string id;
 	int ownerNumber;
 	string address;
 	int telNum;
@@ -66,32 +67,65 @@ Job UserInterface::displayAddJob()
 	string recievedDate;
 	string deliveredDate;
 	double price;
-	char condition;
+	char condition,
+		c;
 
 	displayHeader();
 	cout << "                            Add Job" << endl << endl;
+	cout << "\tid\t\t:\t";
+	while (cin.get(c) && c != '\n')
+		if (!std::isspace(c))
+		{
+			std::cerr << "ERROR unexpected character '" << c << "' found\n";
+			exit(EXIT_FAILURE);
+		}
+	getline(cin, id);
 	cout << "\tOwner Number\t:\t";
 	cin >> ownerNumber;
 	cout << "\tAddress\t\t:\t";
-	cin >> address;
+	while (cin.get(c) && c != '\n')
+		if (!std::isspace(c))
+		{
+			std::cerr << "ERROR unexpected character '" << c << "' found\n";
+			exit(EXIT_FAILURE);
+		}
+	getline(cin, address);
 	cout << "\tTel Number\t:\t";
 	cin >> telNum;
 	cout << "\tPhone Model\t:\t";
-	cin >> phoneModel;
+	while (cin.get(c) && c != '\n')
+		if (!std::isspace(c))
+		{
+			std::cerr << "ERROR unexpected character '" << c << "' found\n";
+			exit(EXIT_FAILURE);
+		}
+	getline(cin, phoneModel);
 	cout << "\tPhone Serial Number\t:\t";
 	cin >> phoneSerialNum;
 	cout << "\tRecieved Date\t:\t";
-	cin >> recievedDate;
+	while (cin.get(c) && c != '\n')
+		if (!std::isspace(c))
+		{
+			std::cerr << "ERROR unexpected character '" << c << "' found\n";
+			exit(EXIT_FAILURE);
+		}
+	getline(cin, recievedDate);
 
 	cout << endl << "\tDo you want to enter the deleivered Date (y/n)";
 	cin >> condition;
 	if (condition == 'y') {
 		cout << "\Delivered Date\t:\t";
-		cin >> deliveredDate;
+		while (cin.get(c) && c != '\n')
+			if (!std::isspace(c))
+			{
+				std::cerr << "ERROR unexpected character '" << c << "' found\n";
+				exit(EXIT_FAILURE);
+			}
+		getline(cin, deliveredDate);
 	}
 	else {
 		system("PAUSE");
-		return Job(ownerNumber, address, telNum, phoneModel, phoneSerialNum, recievedDate);
+		return Job(id,ownerNumber, address, telNum, phoneModel, phoneSerialNum, recievedDate);
 	}
 	cout << endl << "\tDo you want to enter the price (y/n)";
 	cin >> condition;
@@ -101,10 +135,34 @@ Job UserInterface::displayAddJob()
 	}
 	else {
 		system("PAUSE");
-		return Job(ownerNumber, address, telNum, phoneModel, phoneSerialNum, recievedDate, deliveredDate);
+		return Job(id,ownerNumber, address, telNum, phoneModel, phoneSerialNum, recievedDate, deliveredDate);
 	}
 	system("PAUSE");
-	return Job(ownerNumber, address, telNum, phoneModel, phoneSerialNum, recievedDate, deliveredDate, price);
+	return Job(id,ownerNumber, address, telNum, phoneModel, phoneSerialNum, recievedDate, deliveredDate, price);
+}
+
+string UserInterface::displayGetId()
+{
+	char c;
+	string id;
+	displayHeader();
+	cout << "                          Find Job By Id" << endl << endl;
+	cout << "\tID\t\t:\t";
+	while (cin.get(c) && c != '\n')
+		if (!std::isspace(c))
+		{
+			std::cerr << "ERROR unexpected character '" << c << "' found\n";
+			exit(EXIT_FAILURE);
+		}
+	getline(cin, id);
+	system("PAUSE");
+	return id;
+}
+
+bool UserInterface::displayUpdate(Job* job)
+{
+	displayHeader();
+
 }
 
 void UserInterface::displayHeader()
@@ -114,3 +172,4 @@ void UserInterface::displayHeader()
 	cout << "                   Welcome To Job Recorder" << endl << endl;
 	cout << "**************************************************************" << endl << endl;
 }
+

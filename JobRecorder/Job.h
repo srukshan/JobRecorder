@@ -5,8 +5,7 @@ using namespace std;
 class Job
 {
 private:
-	static int currentMaxId;
-	int id;
+	string id;
 	int ownerNumber;
 	string address;
 	int telNum;
@@ -18,10 +17,11 @@ private:
 
 public:
 	Job();
-	Job(int ownerNumber, string address, int telNum, string phoneModel, int phoneSerialNum, string recievedDate);
-	Job(int ownerNumber, string address, int telNum, string phoneModel, int phoneSerialNum, string recievedDate, string deliveredDate);
-	Job(int ownerNumber, string address, int telNum, string phoneModel, int phoneSerialNum, string recievedDate, string deliveredDate, double price);
-	int getId();
+	Job(string id, int ownerNumber, string address, int telNum, string phoneModel, int phoneSerialNum, string recievedDate);
+	Job(string id, int ownerNumber, string address, int telNum, string phoneModel, int phoneSerialNum, string recievedDate, string deliveredDate);
+	Job(string id, int ownerNumber, string address, int telNum, string phoneModel, int phoneSerialNum, string recievedDate, string deliveredDate, double price);
+	string getId();
+	void setId(string id);
 	string getAddress();
 	void setAddress(string address);
 	int getOwnerNumber();
@@ -39,4 +39,5 @@ public:
 	double getPrice();
 	void setPrice(double price);
 	string toString();
+	static Job toObject(string source);
 };

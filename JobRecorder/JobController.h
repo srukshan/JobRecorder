@@ -10,5 +10,6 @@ private:
 
 public:
 	bool insertJob(Job job);
+	Job findByID(string id);
 };
 

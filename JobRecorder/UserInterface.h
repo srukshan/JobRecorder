@@ -13,6 +13,8 @@ public:
 	int displayMainMenu();
 	void displayCompanyDetails();
 	Job displayAddJob();
+	string displayGetId();
+	bool displayUpdate(Job* job);
 
 private:
 	void displayHeader();

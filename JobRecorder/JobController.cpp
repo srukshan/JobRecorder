@@ -5,13 +5,8 @@ const string FILENAME = "data.txt";
 
 bool JobController::fileExists(std::string name)
 {
-	if (FILE * file = fopen(name.c_str(), "r")) {
-		fclose(file);
-		return true;
-	}
-	else {
-		return false;
-	}
+	struct stat buffer;
+	return (stat(name.c_str(), &buffer) == 0);
 }
 
 bool JobController::createFile(std::string name)
@@ -45,4 +40,28 @@ bool JobController::insertJob(Job job)
 	file.close();
 
 	return true;
+}
+
+Job JobController::findByID(string id)
+{
+	if (!fileExists(FILENAME)) {
+		return;
+	}
+	ifstream file(FILENAME);
+	if (!file.is_open()) {
+		return;
+	}
+	
+	string line;
+
+	while (getline(file,line))
+	{
+		Job job = Job::toObject(line);
+		if (job.getId() == id) {
+			file.close();
+			return job;
+		}
+	}
+	file.close();
+	return;
 }
