@@ -155,12 +155,14 @@
     <ClCompile Include="JobController.cpp" />
     <ClCompile Include="JobRecorder.cpp" />
     <ClCompile Include="UserInterface.cpp" />
+    <ClCompile Include="Validator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Job.h" />
     <ClInclude Include="JobController.h" />
     <ClInclude Include="JobRecorder.h" />
     <ClInclude Include="UserInterface.h" />
+    <ClInclude Include="Validator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
