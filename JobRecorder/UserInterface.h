@@ -2,6 +2,7 @@
 #include <tuple>
 #include <iostream>
 #include "Job.h"
+#include <vector>
 
 using namespace std;
 
@@ -15,8 +16,12 @@ public:
 	Job displayAddJob();
 	string displayGetId();
 	bool displayUpdate(Job* job);
+	void displayJob(vector<Job> jobs);
+	void displayJob(Job job);
+	bool displayDecision(string reason);
 
 private:
 	void displayHeader();
+	void displaySimpleJob(Job job);
 };
 

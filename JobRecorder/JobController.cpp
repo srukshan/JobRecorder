@@ -1,5 +1,6 @@
 #include "JobController.h"
 #include <fstream>
+#include <vector>
 
 const string FILENAME = "data.txt";
 
@@ -45,11 +46,11 @@ bool JobController::insertJob(Job job)
 Job JobController::findByID(string id)
 {
 	if (!fileExists(FILENAME)) {
-		return;
+		return Job();
 	}
 	ifstream file(FILENAME);
 	if (!file.is_open()) {
-		return;
+		return Job();
 	}
 	
 	string line;
@@ -63,5 +64,100 @@ Job JobController::findByID(string id)
 		}
 	}
 	file.close();
-	return;
+	return Job();
+}
+
+bool JobController::updateJob(Job job)
+{
+	if (!fileExists(FILENAME)) {
+		return false;
+	}
+	ifstream file(FILENAME);
+	if (!file.is_open()) {
+		return false;
+	}
+
+	if (!fileExists("temp_" + FILENAME)) {
+		if (!createFile("temp_" + FILENAME)) {
+			return false;
+		}
+	}
+	ofstream tempfile("temp_" + FILENAME);
+
+	string line;
+
+	while (getline(file, line))
+	{
+		Job newjob = Job::toObject(line);
+		if (newjob.getId() == job.getId()) {
+			tempfile << job.toString();
+		}
+		else {
+			tempfile << newjob.toString();
+		}
+	}
+	file.close();
+	tempfile.close();
+	remove(FILENAME.c_str());
+	if (rename(("temp_" + FILENAME).c_str(), FILENAME.c_str()) != 0) {
+		return false;
+	}
+	return true;
+}
+
+vector<Job> JobController::getAll()
+{
+	vector<Job> jobs;
+	if (!fileExists(FILENAME)) {
+		return jobs;
+	}
+	ifstream file(FILENAME);
+	if (!file.is_open()) {
+		return jobs;
+	}
+	string line;
+
+	while (getline(file, line))
+	{
+		Job job = Job::toObject(line);
+		jobs.push_back(job);
+	}
+	file.close();
+	return jobs;
+}
+
+bool JobController::deleteJob(Job job)
+{
+	if (!fileExists(FILENAME)) {
+		return false;
+	}
+	ifstream file(FILENAME);
+	if (!file.is_open()) {
+		return false;
+	}
+
+	if (!fileExists("temp_" + FILENAME)) {
+		if (!createFile("temp_" + FILENAME)) {
+			return false;
+		}
+	}
+
+	ofstream tempfile("temp_" + FILENAME);
+
+	string line;
+
+	while (getline(file, line))
+	{
+		Job newjob = Job::toObject(line);
+		if (newjob.getId() != job.getId()) {
+			tempfile << newjob.toString();
+		}
+	}
+	file.close();
+	tempfile.close();
+	remove(FILENAME.c_str());
+	if (rename(("temp_" + FILENAME).c_str(), FILENAME.c_str()) != 0) {
+		return false;
+	}
+	return true;
 }

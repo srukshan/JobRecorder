@@ -1,4 +1,2 @@
-﻿  UserInterface.cpp
-C:\Users\sachi\source\repos\JobRecorder\JobRecorder\UserInterface.cpp(117,11): warning C4129:  'D': unrecognized character escape sequence
-C:\Users\sachi\source\repos\JobRecorder\JobRecorder\UserInterface.cpp(133,11): warning C4129:  'P': unrecognized character escape sequence
+﻿  JobController.cpp
   JobRecorder.vcxproj -> C:\Users\sachi\source\repos\JobRecorder\x64\Debug\JobRecorder.exe
