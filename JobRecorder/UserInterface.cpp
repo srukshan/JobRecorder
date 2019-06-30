@@ -63,7 +63,7 @@ Job UserInterface::displayAddJob()
 	string id;
 	int ownerNumber;
 	string address;
-	int telNum;
+	string telNum;
 	string phoneModel;
 	int phoneSerialNum;
 	string recievedDate;
@@ -75,65 +75,67 @@ Job UserInterface::displayAddJob()
 
 	displayHeader();
 	cout << "                            Add Job" << endl << endl;
+	while (cin.get(c) && c != '\n')
+		if (!std::isspace(c))
+		{
+			std::cerr << "ERROR unexpected character '" << c << "' found\n";
+			exit(EXIT_FAILURE);
+		}
 	do {
 		cout << "\tid\t\t:\t";
-		while (cin.get(c) && c != '\n')
-			if (!std::isspace(c))
-			{
-				std::cerr << "ERROR unexpected character '" << c << "' found\n";
-				exit(EXIT_FAILURE);
-			}
+		
 		getline(cin, id);
 	} while (!validator.isNotEmpty(id));
 	cout << "\tOwner Number\t:\t";
 	cin >> ownerNumber;
+	while (cin.get(c) && c != '\n')
+		if (!std::isspace(c))
+		{
+			std::cerr << "ERROR unexpected character '" << c << "' found\n";
+			exit(EXIT_FAILURE);
+		}
 	do {
 		cout << "\tAddress\t\t:\t";
-		while (cin.get(c) && c != '\n')
-			if (!std::isspace(c))
-			{
-				std::cerr << "ERROR unexpected character '" << c << "' found\n";
-				exit(EXIT_FAILURE);
-			}
+		
 		getline(cin, address);
 	} while (!validator.isNotEmpty(address));
 	do {
 		cout << "\tTel Number\t:\t";
-		cin >> telNum;
+		
+		getline(cin, telNum);
 	} while (!validator.isPhoneNumber(telNum));
+	
 	do {
+		
 		cout << "\tPhone Model\t:\t";
-		while (cin.get(c) && c != '\n')
-			if (!std::isspace(c))
-			{
-				std::cerr << "ERROR unexpected character '" << c << "' found\n";
-				exit(EXIT_FAILURE);
-			}
+		
 		getline(cin, phoneModel);
 	} while (!validator.isNotEmpty(phoneModel));
 	cout << "\tPhone Serial Number\t:\t";
 	cin >> phoneSerialNum;
+	while (cin.get(c) && c != '\n')
+		if (!std::isspace(c))
+		{
+			std::cerr << "ERROR unexpected character '" << c << "' found\n";
+			exit(EXIT_FAILURE);
+		}
 	do {
 		cout << "\tRecieved Date\t:\t";
-		while (cin.get(c) && c != '\n')
-			if (!std::isspace(c))
-			{
-				std::cerr << "ERROR unexpected character '" << c << "' found\n";
-				exit(EXIT_FAILURE);
-			}
+		
 		getline(cin, recievedDate);
 	} while (!validator.isDate(recievedDate));
 	cout << endl << "\tDo you want to enter the deleivered Date (y/n)";
 	cin >> condition;
 	if (condition == 'y') {
+		while (cin.get(c) && c != '\n')
+			if (!std::isspace(c))
+			{
+				std::cerr << "ERROR unexpected character '" << c << "' found\n";
+				exit(EXIT_FAILURE);
+			}
 		do {
 			cout << "\tDelivered Date\t:\t";
-			while (cin.get(c) && c != '\n')
-				if (!std::isspace(c))
-				{
-					std::cerr << "ERROR unexpected character '" << c << "' found\n";
-					exit(EXIT_FAILURE);
-				}
+			
 			getline(cin, deliveredDate);
 		} while (!validator.isDate(deliveredDate));
 	}
@@ -252,11 +254,16 @@ bool UserInterface::displayUpdate(Job* job)
 		displayHeader();
 		cout << "                      Update Telephone Number" << endl << endl;
 		cout << "\tOld Telephone Number\t:\t" << job->getTelNum() << endl;
-		int in;
+		string in;
 		do {
 			cout << "\tNew Telephone Number\t:\t";
-
-			cin >> in;
+			while (cin.get(c) && c != '\n')
+				if (!std::isspace(c))
+				{
+					std::cerr << "ERROR unexpected character '" << c << "' found\n";
+					exit(EXIT_FAILURE);
+				}
+			getline(cin, in);
 		} while (!validator.isPhoneNumber(in));
 		job->setTelNum(in);
 		system("PAUSE");

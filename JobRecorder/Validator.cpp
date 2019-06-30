@@ -8,9 +8,9 @@
 
 using namespace std;
 
-bool Validator::isPhoneNumber(int telNo)
+bool Validator::isPhoneNumber(string telNo)
 {
-	if (to_string(telNo).length() >= 10) {
+	if ((telNo.length() >= 10) && (regex_match(telNo, regex("^[0-9]+$")))) {
 		return true;
 	}
 	cout << "\t\tInvalid Phone number" << endl;
@@ -45,19 +45,19 @@ bool Validator::isNotEmpty(string text)
 }
 
 // trim from start (in place)
-void ltrim(std::string& s) {
+void Validator::ltrim(std::string& s) {
 	s.erase(s.begin(), std::find_if(s.begin(), s.end(),
 		std::not1(std::ptr_fun<int, int>(std::isspace))));
 }
 
 // trim from end (in place)
-void rtrim(std::string& s) {
+void Validator::rtrim(std::string& s) {
 	s.erase(std::find_if(s.rbegin(), s.rend(),
 		std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
 }
 
 // trim from both ends (in place)
-string trim(std::string s) {
+string Validator::trim(std::string s) {
 	ltrim(s);
 	rtrim(s);
 	return s;

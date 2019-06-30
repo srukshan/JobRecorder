@@ -42,7 +42,11 @@ int main()
 			break;
 		case 2: 
 		{
-			Job job = ui.displayAddJob();
+			Job job;
+			do {
+				job = ui.displayAddJob();
+			} while (controller.findByID(job.getId()).getId() != "");
+
 			controller.insertJob(job);
 		}
 			break;

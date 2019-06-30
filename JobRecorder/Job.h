@@ -8,7 +8,7 @@ private:
 	string id;
 	int ownerNumber;
 	string address;
-	int telNum;
+	string telNum;
 	string phoneModel;
 	int phoneSerialNum;
 	string recievedDate;
@@ -17,17 +17,17 @@ private:
 
 public:
 	Job();
-	Job(string id, int ownerNumber, string address, int telNum, string phoneModel, int phoneSerialNum, string recievedDate);
-	Job(string id, int ownerNumber, string address, int telNum, string phoneModel, int phoneSerialNum, string recievedDate, string deliveredDate);
-	Job(string id, int ownerNumber, string address, int telNum, string phoneModel, int phoneSerialNum, string recievedDate, string deliveredDate, double price);
+	Job(string id, int ownerNumber, string address, string telNum, string phoneModel, int phoneSerialNum, string recievedDate);
+	Job(string id, int ownerNumber, string address, string telNum, string phoneModel, int phoneSerialNum, string recievedDate, string deliveredDate);
+	Job(string id, int ownerNumber, string address, string telNum, string phoneModel, int phoneSerialNum, string recievedDate, string deliveredDate, double price);
 	string getId();
 	void setId(string id);
 	string getAddress();
 	void setAddress(string address);
 	int getOwnerNumber();
 	void setOwnerNumber(int ownerNumber);
-	int getTelNum();
-	void setTelNum(int telNum);
+	string getTelNum();
+	void setTelNum(string telNum);
 	string getPhoneModel();
 	void setPhoneModel(string phoneModel);
 	int getPhoneSerialNum();

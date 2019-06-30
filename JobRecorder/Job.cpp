@@ -7,7 +7,7 @@ Job::Job()
 	this->id = "";
 	this->ownerNumber = 0;
 	this->address = "";
-	this->telNum = 0;
+	this->telNum = "";
 	this->phoneModel = "";
 	this->phoneSerialNum = 0;
 	this->recievedDate = "";
@@ -19,7 +19,7 @@ Job::Job(
 	string id,
 	int ownerNumber,
 	string address,
-	int telNum,
+	string telNum,
 	string phoneModel,
 	int phoneSerialNum,
 	string recievedDate) : Job()
@@ -37,7 +37,7 @@ Job::Job(
 	string id,
 	int ownerNumber,
 	string address,
-	int telNum,
+	string telNum,
 	string phoneModel,
 	int phoneSerialNum,
 	string recievedDate,
@@ -50,7 +50,7 @@ Job::Job(
 	string id,
 	int ownerNumber,
 	string address,
-	int telNum,
+	string telNum,
 	string phoneModel,
 	int phoneSerialNum,
 	string recievedDate,
@@ -90,12 +90,12 @@ void Job::setOwnerNumber(int ownerNumber)
 	this->ownerNumber = ownerNumber;
 }
 
-int Job::getTelNum()
+string Job::getTelNum()
 {
 	return telNum;
 }
 
-void Job::setTelNum(int telNum)
+void Job::setTelNum(string telNum)
 {
 	this->telNum = telNum;
 }
@@ -156,7 +156,7 @@ string Job::toString()
 	oss << id << ","
 		<< ownerNumber << ","
 		<< address << ","
-		<< std::to_string(telNum) << ","
+		<< telNum << ","
 		<< phoneModel << ","
 		<< std::to_string(phoneSerialNum) << ","
 		<< recievedDate << ","
@@ -176,5 +176,5 @@ Job Job::toObject(string source)
 	{
 		vars.push_back(line);
 	}
-	return Job(vars[0], stoi(vars[1]), vars[2], stoi(vars[3]), vars[4], stoi(vars[5]), vars[6], vars[7], stod(vars[8]));
+	return Job(vars[0], stoi(vars[1]), vars[2], vars[3], vars[4], stoi(vars[5]), vars[6], vars[7], stod(vars[8]));
 }
